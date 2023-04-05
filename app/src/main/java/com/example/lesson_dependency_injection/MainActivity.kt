@@ -7,6 +7,9 @@ import com.example.lesson_dependency_injection.example1.EnglishPerson
 import com.example.lesson_dependency_injection.example1.SpanishPerson
 import com.example.lesson_dependency_injection.example2.EnglishPersonHilt
 import com.example.lesson_dependency_injection.example2.SpanishPersonHilt
+import com.example.lesson_dependency_injection.example3.EnglishQualifier
+import com.example.lesson_dependency_injection.example3.Person
+import com.example.lesson_dependency_injection.example3.SpanishQualifier
 import com.example.lesson_dependency_injection.ui.theme.LessonDependencyInjectionTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -19,10 +22,19 @@ class MainActivity : ComponentActivity() {
 
     // Example 2
     @Inject
-    lateinit var englishPersonHilt: EnglishPersonHilt
+    lateinit var englishPersonHilt1: EnglishPersonHilt
 
     @Inject
-    lateinit var spanishPersonHilt: SpanishPersonHilt
+    lateinit var spanishPersonHilt1: SpanishPersonHilt
+
+    // Example 3
+    @EnglishQualifier
+    @Inject
+    lateinit var englishPersonHilt2: Person
+
+    @SpanishQualifier
+    @Inject
+    lateinit var spanishPersonHilt2: Person
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +45,15 @@ class MainActivity : ComponentActivity() {
                 // spanishPerson = SpanishPerson(englishPerson)
                 // spanishPerson.speakSpanish()
                 // spanishPerson.englishPerson.speakEnglish()
+
                 // Example 2
-                englishPersonHilt.speakEnglish()
-                spanishPersonHilt.speakSpanish()
-                spanishPersonHilt.englishPersonHilt.speakEnglish()
+                // englishPersonHilt1.speakEnglish()
+                // spanishPersonHilt1.speakSpanish()
+                // spanishPersonHilt1.englishPersonHilt.speakEnglish()
+
+                // Example 3
+                englishPersonHilt2.speakLanguage()
+                spanishPersonHilt2.speakLanguage()
             }
         }
     }
