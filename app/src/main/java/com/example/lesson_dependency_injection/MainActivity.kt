@@ -3,6 +3,7 @@ package com.example.lesson_dependency_injection
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import com.example.lesson_dependency_injection.example1.EnglishPerson
 import com.example.lesson_dependency_injection.example1.SpanishPerson
 import com.example.lesson_dependency_injection.example2.EnglishPersonHilt
@@ -10,6 +11,8 @@ import com.example.lesson_dependency_injection.example2.SpanishPersonHilt
 import com.example.lesson_dependency_injection.example3.EnglishQualifier
 import com.example.lesson_dependency_injection.example3.Person
 import com.example.lesson_dependency_injection.example3.SpanishQualifier
+import com.example.lesson_dependency_injection.example4.EnglishPersonViewModel
+import com.example.lesson_dependency_injection.example4.SpanishPersonViewModel
 import com.example.lesson_dependency_injection.ui.theme.LessonDependencyInjectionTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -36,6 +39,10 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var spanishPersonHilt2: Person
 
+    // Example 4
+    private val englishPersonViewModel: EnglishPersonViewModel by viewModels()
+    private val spanishPersonViewModel: SpanishPersonViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -52,8 +59,12 @@ class MainActivity : ComponentActivity() {
                 // spanishPersonHilt1.englishPersonHilt.speakEnglish()
 
                 // Example 3
-                englishPersonHilt2.speakLanguage()
-                spanishPersonHilt2.speakLanguage()
+                // englishPersonHilt2.speakLanguage()
+                // spanishPersonHilt2.speakLanguage()
+
+                // Example 4
+                // englishPersonViewModel.speakEnglish()
+                // spanishPersonViewModel.speakSpanish()
             }
         }
     }
